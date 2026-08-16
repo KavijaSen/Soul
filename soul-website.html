@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOUL — Dream to Reality</title>
+<meta name="description" content="SOUL is a creative direction studio: lifestyle-led branding, styling, content and influencer management, based in New Zealand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0c0c0b;
+    --void-2:#141311;
+    --bone:#f2ede3;
+    --bone-dim:#cfc9bc;
+    --gold:#c6a15b;
+    --moss:#6b7358;
+    --line-dark:rgba(242,237,227,0.14);
+    --line-light:rgba(12,12,11,0.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--bone);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    line-height:1.05;
+  }
+
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:0.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,64px);
+  }
+
+  /* ---------- grain overlay ---------- */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:200;
+    opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    background:linear-gradient(to bottom, rgba(12,12,11,.9), rgba(12,12,11,0));
+    backdrop-filter:blur(2px);
+  }
+  .brandmark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:600; letter-spacing:.06em;
+    text-decoration:none; font-size:1rem;
+  }
+  .mono-ring{
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.62rem; letter-spacing:.02em;
+  }
+  nav ul{
+    list-style:none; display:flex; gap:36px; margin:0; padding:0;
+  }
+  nav a{
+    text-decoration:none; font-size:.82rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--bone-dim);
+    transition:color .25s var(--ease);
+    position:relative;
+  }
+  nav a:hover, nav a:focus-visible{color:var(--bone);}
+  .nav-right{display:flex; align-items:center; gap:28px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:999px;
+    border:1px solid var(--gold); color:var(--bone);
+    text-decoration:none; font-size:.78rem; letter-spacing:.08em;
+    text-transform:uppercase; font-weight:500;
+    background:transparent; cursor:pointer;
+    transition:background .3s var(--ease), color .3s var(--ease);
+    font-family:'Inter',sans-serif;
+  }
+  .btn:hover, .btn:focus-visible{background:var(--gold); color:var(--void);}
+  .btn-solid{background:var(--gold); color:var(--void);}
+  .btn-solid:hover{background:transparent; color:var(--bone);}
+
+  .menu-toggle{
+    display:none; background:none; border:none; color:var(--bone);
+    font-size:1.4rem; cursor:pointer; padding:6px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    position:relative;
+    padding-top:100px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:40px;
+    align-items:center;
+    width:100%;
+  }
+  .hero-copy .eyebrow{margin-bottom:22px; display:block;}
+  .hero h1{
+    font-size:clamp(2.8rem, 6.4vw, 5.6rem);
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:400; color:var(--gold);
+  }
+  .hero p.lede{
+    max-width:46ch;
+    margin-top:26px;
+    color:var(--bone-dim);
+    font-size:1.08rem;
+  }
+  .hero-actions{
+    display:flex; gap:16px; margin-top:40px; flex-wrap:wrap;
+  }
+
+  /* rotating seal */
+  .seal-stage{
+    position:relative;
+    width:min(340px, 100%);
+    aspect-ratio:1/1;
+    margin:0 auto;
+  }
+  .seal-ring{
+    position:absolute; inset:0;
+    border-radius:50%;
+  }
+  .seal-ring svg{width:100%;height:100%; animation:spin 34s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .seal-core{
+    position:absolute; inset:14%;
+    border-radius:50%;
+    background:var(--bone);
+    color:var(--void);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    box-shadow:0 30px 80px -20px rgba(198,161,91,.35);
+  }
+  .seal-core .soul{
+    font-family:'Fraunces',serif; font-weight:600; font-size:2.1rem;
+    letter-spacing:.02em;
+  }
+  .seal-core .rule{
+    width:34px;height:1px;background:var(--void); opacity:.5; margin:8px 0;
+  }
+  .seal-core .tag{
+    font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; opacity:.72;
+  }
+
+  .scroll-cue{
+    position:absolute; bottom:36px; left:clamp(20px,5vw,64px);
+    display:flex; align-items:center; gap:10px;
+    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--bone-dim);
+  }
+  .scroll-cue .line{width:34px;height:1px;background:var(--bone-dim);}
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    border-top:1px solid var(--line-dark);
+    border-bottom:1px solid var(--line-dark);
+    overflow:hidden; white-space:nowrap;
+    padding:16px 0;
+  }
+  .marquee-track{
+    display:inline-block;
+    animation:marquee 26s linear infinite;
+  }
+  .marquee-track span{
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:1.15rem; color:var(--bone-dim);
+    padding:0 22px; letter-spacing:.02em;
+  }
+  .marquee-track span::after{content:"—"; margin-left:22px; color:var(--gold); font-style:normal;}
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- section shell ---------- */
+  section{padding:120px 0;}
+  .section-head{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+    align-items:end; margin-bottom:64px;
+  }
+  .section-head h2{font-size:clamp(2.1rem, 3.6vw, 3.2rem);}
+  .section-head p{color:var(--bone-dim); max-width:42ch; font-size:1rem;}
+
+  /* ---------- services (light section) ---------- */
+  .light{background:var(--bone); color:var(--void);}
+  .light .eyebrow{color:#8a6a34;}
+  .light .section-head p{color:#5b564b;}
+
+  .service-list{border-top:1px solid var(--line-light);}
+  .service-row{
+    display:grid; grid-template-columns:1.1fr 1.9fr .9fr;
+    gap:32px; align-items:start;
+    padding:38px 0;
+    border-bottom:1px solid var(--line-light);
+    transition:background .3s var(--ease);
+  }
+  .service-row:hover{background:rgba(198,161,91,.08);}
+  .service-row h3{font-size:1.7rem; font-weight:500;}
+  .service-row .stag{
+    font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:#8a6a34;
+    align-self:center;
+  }
+  .service-row p{margin:0; color:#4a463d; font-size:.98rem; max-width:52ch;}
+
+  /* ---------- philosophy / pull quote ---------- */
+  .quote-section{
+    background:var(--void-2);
+    text-align:center;
+    position:relative;
+  }
+  .quote-section blockquote{
+    margin:0 auto; max-width:820px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.9rem, 4.4vw, 3.4rem);
+    line-height:1.25;
+  }
+  .quote-section blockquote .gold{color:var(--gold); font-style:normal; font-weight:500;}
+  .quote-cite{
+    margin-top:28px; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--bone-dim);
+  }
+
+  /* ---------- work ---------- */
+  .work-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+  }
+  .work-card{
+    border-radius:2px; overflow:hidden; position:relative;
+    aspect-ratio:4/5;
+    display:flex; align-items:flex-end;
+    padding:22px;
+    border:1px solid var(--line-light);
+  }
+  .work-card::before{
+    content:""; position:absolute; inset:0; opacity:.9;
+  }
+  .work-card.c1::before{background:
+    radial-gradient(120% 90% at 20% 0%, #d8c6a1 0%, transparent 60%),
+    linear-gradient(160deg,#26241f,#0c0c0b 70%);}
+  .work-card.c2::before{background:
+    radial-gradient(110% 90% at 80% 100%, #6b7358 0%, transparent 55%),
+    linear-gradient(200deg,#1c1c18,#0c0c0b 70%);}
+  .work-card.c3::before{background:
+    radial-gradient(120% 90% at 50% 0%, #c6a15b 0%, transparent 55%),
+    linear-gradient(180deg,#1a1a16,#0c0c0b 70%);}
+  .work-meta{position:relative; z-index:2; color:var(--bone);}
+  .work-meta .eyebrow{color:var(--gold); margin-bottom:6px; display:block;}
+  .work-meta h4{font-size:1.3rem; font-weight:500;}
+
+  /* ---------- contact ---------- */
+  .contact-section{
+    background:var(--void);
+  }
+  .contact-grid{
+    display:grid; grid-template-columns:.9fr 1.1fr; gap:64px;
+  }
+  .contact-left h2{font-size:clamp(2.2rem,4vw,3.4rem); margin-bottom:22px;}
+  .contact-left p{color:var(--bone-dim); max-width:40ch;}
+  .contact-info{margin-top:44px; display:flex; flex-direction:column; gap:16px;}
+  .contact-info a{
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+    font-size:.95rem; padding-bottom:14px; border-bottom:1px solid var(--line-dark);
+    transition:color .25s var(--ease);
+  }
+  .contact-info a:hover{color:var(--gold);}
+
+  form{
+    background:var(--void-2);
+    border:1px solid var(--line-dark);
+    border-radius:6px;
+    padding:clamp(24px,4vw,44px);
+  }
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .field{margin-bottom:22px;}
+  .field label{
+    display:block; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--bone-dim); margin-bottom:9px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line-dark);
+    color:var(--bone); font-family:'Inter',sans-serif; font-size:.98rem;
+    padding:10px 2px; outline:none;
+    transition:border-color .25s var(--ease);
+  }
+  .field select option{background:var(--void-2); color:var(--bone);}
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--gold);}
+  .field textarea{resize:vertical; min-height:96px;}
+  .field.invalid input, .field.invalid select, .field.invalid textarea{border-color:#c0554a;}
+  .field .err{
+    display:none; font-size:.74rem; color:#e0897c; margin-top:6px;
+  }
+  .field.invalid .err{display:block;}
+
+  .submit-row{display:flex; align-items:center; gap:18px; margin-top:8px;}
+  .form-note{font-size:.78rem; color:var(--bone-dim);}
+
+  .success-panel{
+    display:none;
+    text-align:center; padding:40px 10px;
+  }
+  .success-panel.show{display:block;}
+  .success-panel .mark{
+    width:56px;height:56px;border-radius:50%;
+    border:1px solid var(--gold); display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px; font-size:1.3rem; color:var(--gold);
+  }
+  .success-panel h3{font-size:1.5rem; margin-bottom:10px;}
+  .success-panel p{color:var(--bone-dim); font-size:.92rem;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line-dark);
+    padding:44px 0;
+  }
+  .footer-row{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;
+  }
+  .footer-brand{display:flex; align-items:center; gap:12px;}
+  .footer-links{display:flex; gap:26px; list-style:none; padding:0; margin:0;}
+  .footer-links a{text-decoration:none; font-size:.82rem; color:var(--bone-dim);}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-fine{font-size:.75rem; color:var(--bone-dim); margin-top:24px;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    nav ul{display:none;}
+    .menu-toggle{display:block;}
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .hero-actions{justify-content:center;}
+    .seal-stage{margin-top:40px;}
+    .section-head{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:1fr; gap:10px;}
+    .service-row .stag{order:-1;}
+    .work-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-row{flex-direction:column; align-items:flex-start;}
+  }
+  @media (max-width:560px){
+    .work-grid{grid-template-columns:1fr;}
+    section{padding:84px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .seal-ring svg, .marquee-track{animation:none !important;}
+  }
+
+  .visually-hidden{
+    position:absolute; width:1px;height:1px; overflow:hidden; clip:rect(0 0 0 0);
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header>
+  <a href="#top" class="brandmark">
+    <span class="mono-ring">S</span>
+    SOUL
+  </a>
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <a href="#contact" class="btn btn-solid">Start a project</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Creative Direction · New Zealand</span>
+        <h1>Dream to<br><em>Reality.</em></h1>
+        <p class="lede">SOUL is a lifestyle-led creative studio — branding, styling, content and influencer management for people and brands ready to turn blank walls into wow moments.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-solid">Start a project</a>
+          <a href="#work" class="btn">See the work</a>
+        </div>
+      </div>
+      <div class="seal-stage" aria-hidden="true">
+        <div class="seal-ring">
+          <svg viewBox="0 0 300 300">
+            <defs>
+              <path id="ringPath" d="M150,150 m-118,0 a118,118 0 1,1 236,0 a118,118 0 1,1 -236,0"/>
+            </defs>
+            <text fill="var(--gold)" font-family="Inter, sans-serif" font-size="11" letter-spacing="3.4">
+              <textPath href="#ringPath" startOffset="0%">
+                DREAM TO REALITY • STYLING • CONTENT • INFLUENCER MANAGEMENT •
+              </textPath>
+            </text>
+          </svg>
+        </div>
+        <div class="seal-core">
+          <div class="soul">SOUL</div>
+          <div class="rule"></div>
+          <div class="tag">Dream to Reality</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span class="line"></span> Scroll</div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" role="presentation">
+    <div class="marquee-track">
+      <span>Styling</span><span>Content</span><span>Influencer Management</span><span>Branding &amp; Creative Solutions</span>
+      <span>Styling</span><span>Content</span><span>Influencer Management</span><span>Branding &amp; Creative Solutions</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="light">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">What we do</span>
+          <h2>Lifestyle-led branding &amp; creative solutions.</h2>
+        </div>
+        <p>Every project starts the same way — with how a brand wants to feel, and who it wants to move. From there, we build the styling, the content and the partnerships around it.</p>
+      </div>
+
+      <div class="service-list">
+        <div class="service-row">
+          <h3>Branding &amp; Creative Solutions</h3>
+          <p>Lifestyle-first brand direction and art direction — the point of view that everything else gets built on.</p>
+          <span class="stag">Strategy · Identity</span>
+        </div>
+        <div class="service-row">
+          <h3>Styling</h3>
+          <p>Wardrobe, set and visual styling for shoots, campaigns and personal brand work, tuned to the story being told.</p>
+          <span class="stag">Shoots · Campaigns</span>
+        </div>
+        <div class="service-row">
+          <h3>Content</h3>
+          <p>Photo and video content across the lifestyle spectrum — from quiet, considered stills to fast-moving social edits.</p>
+          <span class="stag">Photo · Video</span>
+        </div>
+        <div class="service-row">
+          <h3>Influencer Management</h3>
+          <p>Talent partnerships and campaign management that connect brands with the right voices, and keep every detail on track.</p>
+          <span class="stag">Talent · Partnerships</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="quote-section" id="studio">
+    <div class="wrap">
+      <span class="eyebrow">The studio</span>
+      <blockquote style="margin-top:26px;">
+        From blank walls to wow moments — <span class="gold">together we can do the impossible.</span>
+      </blockquote>
+      <div class="quote-cite">— SOUL, Creative Direction</div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="light">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2>Recent directions.</h2>
+        </div>
+        <p>A few of the worlds we've helped shape. Full case studies and imagery available on request.</p>
+      </div>
+      <div class="work-grid">
+        <div class="work-card c1">
+          <div class="work-meta">
+            <span class="eyebrow">Salon</span>
+            <h4>Salon Vasanthi</h4>
+          </div>
+        </div>
+        <div class="work-card c2">
+          <div class="work-meta">
+            <span class="eyebrow">Personal Brand</span>
+            <h4>Remember Me</h4>
+          </div>
+        </div>
+        <div class="work-card c3">
+          <div class="work-meta">
+            <span class="eyebrow">Styling</span>
+            <h4>Back Drops</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <span class="eyebrow">Get in touch</span>
+          <h2 style="margin-top:18px;">Let's build something real.</h2>
+          <p>Tell us about the brand, the moment, or the wall you're trying to turn into something people stop for. We reply to every enquiry.</p>
+
+          <div class="contact-info">
+            <a href="https://www.instagram.com/soul_sl_nz/" target="_blank" rel="noopener">Instagram — @soul_sl_nz</a>
+            <a href="mailto:hello@soulstudio.co.nz">hello@soulstudio.co.nz</a>
+            <a href="#" onclick="return false;">Based in New Zealand</a>
+          </div>
+        </div>
+
+        <div>
+          <form id="enquiryForm" novalidate>
+            <div id="formFields">
+              <div class="form-row">
+                <div class="field" data-field="name">
+                  <label for="name">Full name</label>
+                  <input type="text" id="name" name="name" autocomplete="name" required>
+                  <span class="err">Please enter your name.</span>
+                </div>
+                <div class="field" data-field="email">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" autocomplete="email" required>
+                  <span class="err">Please enter a valid email.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field" data-field="instagram">
+                  <label for="instagram">Instagram handle</label>
+                  <input type="text" id="instagram" name="instagram" placeholder="@yourbrand">
+                </div>
+                <div class="field" data-field="projectType">
+                  <label for="projectType">Project type</label>
+                  <select id="projectType" name="projectType" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option>Branding &amp; Creative Direction</option>
+                    <option>Styling</option>
+                    <option>Content</option>
+                    <option>Influencer Management</option>
+                    <option>Other</option>
+                  </select>
+                  <span class="err">Please choose a project type.</span>
+                </div>
+              </div>
+
+              <div class="field" data-field="budget">
+                <label for="budget">Budget range</label>
+                <select id="budget" name="budget">
+                  <option value="" disabled selected>Select a range</option>
+                  <option>Under $1,000</option>
+                  <option>$1,000 – $5,000</option>
+                  <option>$5,000 – $15,000</option>
+                  <option>$15,000+</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="field" data-field="message">
+                <label for="message">Tell us about the project</label>
+                <textarea id="message" name="message" required placeholder="What are you building, and what does success look like?"></textarea>
+                <span class="err">Let us know a little about the project.</span>
+              </div>
+
+              <div class="submit-row">
+                <button type="submit" class="btn btn-solid">Send enquiry</button>
+                <span class="form-note">We usually reply within 2 business days.</span>
+              </div>
+            </div>
+
+            <div class="success-panel" id="successPanel">
+              <div class="mark">✓</div>
+              <h3>Enquiry sent</h3>
+              <p>Thanks for reaching out — SOUL will be in touch shortly to talk through your project.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <span class="mono-ring">S</span>
+        <span style="font-family:'Fraunces',serif; font-size:1rem;">SOUL — Dream to Reality</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://www.instagram.com/soul_sl_nz/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:hello@soulstudio.co.nz">Email</a></li>
+        <li><a href="#contact">Start a project</a></li>
+      </ul>
+    </div>
+    <div class="footer-fine">© <span id="year"></span> SOUL. Creative direction, styling, content &amp; influencer management — New Zealand.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const navList = document.querySelector('nav ul');
+  toggle.addEventListener('click', () => {
+    const open = navList.style.display === 'flex';
+    navList.style.display = open ? 'none' : 'flex';
+    navList.style.cssText += open ? '' : 'position:fixed;top:64px;left:0;right:0;flex-direction:column;background:#0c0c0b;padding:24px clamp(20px,5vw,64px);gap:20px;border-bottom:1px solid rgba(242,237,227,.14);';
+    toggle.setAttribute('aria-expanded', String(!open));
+  });
+
+  // form validation + success state (client-side only — no backend wired up)
+  const form = document.getElementById('enquiryForm');
+  const fields = document.getElementById('formFields');
+  const success = document.getElementById('successPanel');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let valid = true;
+
+    const requiredFields = ['name','email','projectType','message'];
+    requiredFields.forEach(name => {
+      const input = form.elements[name];
+      const wrap = form.querySelector(`[data-field="${name}"]`);
+      let ok = input.value.trim().length > 0;
+      if(name === 'email' && ok){
+        ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+      }
+      wrap.classList.toggle('invalid', !ok);
+      if(!ok) valid = false;
+    });
+
+    if(!valid){
+      form.querySelector('.invalid input, .invalid select, .invalid textarea')?.focus();
+      return;
+    }
+
+    // No backend is connected in this build. To go live, point this form
+    // at a service like Formspree / Netlify Forms / your own endpoint,
+    // or replace this block with a fetch() call.
+    fields.style.display = 'none';
+    success.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
